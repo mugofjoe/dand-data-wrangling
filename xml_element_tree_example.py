@@ -10,7 +10,7 @@ import pprint
 # As we think about parsing XML using element trees
 # it makes sense to work with Document-oriented XML data
 
-tree = ET.parse('exampleResearchArticle.xml')
+tree = ET.parse('E:/Google Drive/Backpack/Udacity DAND/04 Data Wrangling/exampleResearchArticle.xml')
 root = tree.getroot()
 
 """
