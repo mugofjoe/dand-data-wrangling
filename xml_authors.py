@@ -7,7 +7,7 @@
 
 import xml.etree.ElementTree as ET
 
-article_file = "exampleResearchArticle.xml"
+article_file = 'E:/Google Drive/Backpack/Udacity DAND/04 Data Wrangling/exampleResearchArticle.xml'
 
 
 def get_root(fname):
