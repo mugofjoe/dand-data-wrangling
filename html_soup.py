@@ -58,9 +58,7 @@ def test():
     assert data["eventvalidation"] != ""
     assert data["eventvalidation"].startswith("/wEWjAkCoIj1ng0")
     assert data["viewstate"].startswith("/wEPDwUKLTI")
-
-    # result = make_request(data)
-    # print('foo')
+    print("Program has ended")
 
     
 test()
