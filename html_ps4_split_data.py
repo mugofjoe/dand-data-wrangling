@@ -25,7 +25,7 @@ def get_root(fname):
 
 
 # a generator for the file to be written to
-def outfile_generator(filename):
+def filename_generator(filename):
     n = -1
     while True:
         n += 1
@@ -41,12 +41,19 @@ def split_file(filename):
     The new files should be saved with filename in the following format:
     "{}-{}".format(filename, n) where n is a counter, starting from 0.
     """
-    # the pattern on which the file is split
-    pat = "<?xml"
+    # pattern to look for on using which to split the file
+    split_on_pattern = "<?xml"
 
     # an iterator for the filename
-    outfile_iterator = outfile_generator(filename)
-    pass
+    outputfile_iterator = filename_generator(filename)
+
+    with open(filename) as input_file:
+        for line in input_file:
+            # new file break
+            if split_on_pattern in line:
+                output_file = next(outputfile_iterator)
+
+            output_file.write(line)
 
 
 def test():
