@@ -16,10 +16,15 @@ exercise we suggest that you try to do it programmatically.
 NOTE: You do not need to correct the error - for now, just find where the error
 is occurring.
 """
-
+import os
 import xml.etree.ElementTree as ET
 
-PATENTS = 'patent.data'
+PATENTS = ""
+COMPUTER_NAME = os.environ['COMPUTERNAME']
+
+if COMPUTER_NAME == "MELLOYELLO":
+    PATENTS = "D:/Google Drive/Backpack/Udacity DAND/04 Data Wrangling/patent.data"
+
 
 def get_root(fname):
 
@@ -28,3 +33,4 @@ def get_root(fname):
 
 
 get_root(PATENTS)
+#  xml.etree.ElementTree.ParseError: junk after document element: line 657, column 0
