@@ -28,8 +28,6 @@ elif COMPUTER_NAME == "JDAZO":
 # OSM_FILE = "some_osm.osm"  
 # SAMPLE_FILE = "sample.osm"
 
-print('foo')
-
 k = 100 # Parameter: take every k-th top level element
 
 def get_element(osm_file, tags=('node', 'way', 'relation')):
