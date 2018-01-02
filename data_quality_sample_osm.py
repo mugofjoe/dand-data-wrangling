@@ -30,7 +30,7 @@ elif COMPUTER_NAME == "JDAZO":
 
 print('foo')
 
-k = 100000 # Parameter: take every k-th top level element
+k = 1000 # Parameter: take every k-th top level element
 
 def get_element(osm_file, tags=('node', 'way', 'relation')):
     """
