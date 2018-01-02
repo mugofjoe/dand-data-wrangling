@@ -11,18 +11,18 @@ larger k, then move on to an intermediate k before processing
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import os
-import xml.etree.ElementTree as ET  # Use cElementTree or lxml if too slow
+import xml.etree.cElementTree as ET  # Use cElementTree or lxml if too slow
 
 OSM_FILE = ""
 SAMPLE_FILE = ""
 
 COMPUTER_NAME = os.environ['COMPUTERNAME']
 if COMPUTER_NAME == "MELLOYELLO":
-    OSM_FILE = "E:/Udacity Data Analyst Resources/04 Data Wrangling/chicago.osm"
-    SAMPLE_FILE = "E:/Google Drive/Backpack/Udacity DAND/04 Data Wrangling/sample_chicago.osm"
-elif COMPUTER_NAME == "JDAZO":
     OSM_FILE = ""
     SAMPLE_FILE = ""
+elif COMPUTER_NAME == "JDAZO":
+    OSM_FILE = "E:/Udacity Data Analyst Resources/04 Data Wrangling/chicago.osm"
+    SAMPLE_FILE = "E:/Google Drive/Backpack/Udacity DAND/04 Data Wrangling/sample_chicago.osm"
 
 # Replace this with your osm file
 # OSM_FILE = "some_osm.osm"  
@@ -30,7 +30,7 @@ elif COMPUTER_NAME == "JDAZO":
 
 print('foo')
 
-k = 10 # Parameter: take every k-th top level element
+k = 1000000 # Parameter: take every k-th top level element
 
 def get_element(osm_file, tags=('node', 'way', 'relation')):
     """
@@ -52,4 +52,9 @@ with open(SAMPLE_FILE, 'wb') as output:
     output.write('<osm>\n  ')
 
     # Write every kth top level element
+    for i, element in enumerate(get_element(OSM_FILE)):
+        if i % k == 0:
+            output.write(ET.tostring(element, encoding='utf-8'))
+    
+    output.write('</osm')
     
