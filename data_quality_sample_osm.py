@@ -1,0 +1,55 @@
+"""
+Use the following code to take a systematic sample of elements 
+from your original OSM region. 
+
+Try changing the value of k so that your resulting SAMPLE_FILE 
+ends up at different sizes. When starting out, try using a 
+larger k, then move on to an intermediate k before processing
+ your whole dataset.
+"""
+
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+import os
+import xml.etree.ElementTree as ET  # Use cElementTree or lxml if too slow
+
+OSM_FILE = ""
+SAMPLE_FILE = ""
+
+COMPUTER_NAME = os.environ['COMPUTERNAME']
+if COMPUTER_NAME == "MELLOYELLO":
+    OSM_FILE = "E:/Udacity Data Analyst Resources/04 Data Wrangling/chicago.osm"
+    SAMPLE_FILE = "E:/Google Drive/Backpack/Udacity DAND/04 Data Wrangling/sample_chicago.osm"
+elif COMPUTER_NAME == "JDAZO":
+    OSM_FILE = ""
+    SAMPLE_FILE = ""
+
+# Replace this with your osm file
+# OSM_FILE = "some_osm.osm"  
+# SAMPLE_FILE = "sample.osm"
+
+print('foo')
+
+k = 10 # Parameter: take every k-th top level element
+
+def get_element(osm_file, tags=('node', 'way', 'relation')):
+    """
+    Yield element if it is the right type of tag
+
+    Reference:
+    http://stackoverflow.com/questions/3095434/inserting-newlines-in-xml-file-generated-via-xml-etree-elementtree-in-python
+    
+    """
+    context = iter(ET.iterparse(osm_file, events=('start', 'end')))
+    _, root = next(context)
+    for event, elem in context:
+        if event == 'end' and elem.tag in tags:
+            yield elem
+            root.clear()
+
+with open(SAMPLE_FILE, 'wb') as output:
+    output.write('<?xml version="1.0" encoding="UTF-8"?>\n')
+    output.write('<osm>\n  ')
+
+    # Write every kth top level element
+    

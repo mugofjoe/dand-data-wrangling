@@ -23,6 +23,8 @@ from bs4 import BeautifulSoup
 COMPUTER_NAME = os.environ['COMPUTERNAME']
 html_page = ""
 if COMPUTER_NAME == "MELLOYELLO":
+    html_page = "D:/Google Drive/Backpack/Udacity DAND/04 Data Wrangling/options.html"
+elif COMPUTER_NAME == "JDAZO":
     html_page = "E:/Google Drive/Backpack/Udacity DAND/04 Data Wrangling/options.html"
 
 
