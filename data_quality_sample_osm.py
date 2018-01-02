@@ -21,7 +21,7 @@ if COMPUTER_NAME == "MELLOYELLO":
     OSM_FILE = ""
     SAMPLE_FILE = ""
 elif COMPUTER_NAME == "JDAZO":
-    OSM_FILE = "E:/Udacity Data Analyst Resources/04 Data Wrangling/chicago.osm"
+    OSM_FILE = "E:/Repos/data-wrangling-street-type/chicago.osm"
     SAMPLE_FILE = "E:/Google Drive/Backpack/Udacity DAND/04 Data Wrangling/sample_chicago.osm"
 
 # Replace this with your osm file
