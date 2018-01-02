@@ -56,5 +56,5 @@ with open(SAMPLE_FILE, 'wb') as output:
         if i % k == 0:
             output.write(ET.tostring(element, encoding='utf-8'))
     
-    output.write('</osm')
+    output.write('</osm>')
     
