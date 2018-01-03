@@ -29,7 +29,6 @@ def audit_street_type(street_types, street_name):
     m = street_type_re.search(street_name)
     if m:
         street_type = m.group()
-
         street_types[street_type] += 1
 
 def print_sorted_dict(d):
