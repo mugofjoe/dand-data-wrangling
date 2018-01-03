@@ -1,5 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""
+The program will produce a report on the console of the various 
+street type terms that were used in the street name portion 
+or element within the XML dataset.
+"""
+
 import os
 import xml.etree.cElementTree as ET
 from collections import defaultdict
@@ -45,6 +51,6 @@ def audit():
 if __name__ == '__main__':
     audit()
 
-    
+
 # Full chicago.osm: http://osm-extracted-metros.s3.amazonaws.com/chicago.osm.bz2
 # Full cities file: http://content.udacity-data.com/ud032/infobox/cities.csv.zip
