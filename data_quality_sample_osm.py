@@ -12,6 +12,7 @@ larger k, then move on to an intermediate k before processing
 # -*- coding: utf-8 -*-
 import os
 import xml.etree.cElementTree as ET  # Use cElementTree or lxml if too slow
+import pprint
 
 OSM_FILE = ""
 SAMPLE_FILE = ""
@@ -22,7 +23,7 @@ if COMPUTER_NAME == "MELLOYELLO":
     SAMPLE_FILE = ""
 elif COMPUTER_NAME == "JDAZO":
     OSM_FILE = "E:/Repos/data-wrangling-street-type/chicago.osm"
-    SAMPLE_FILE = "E:/Google Drive/Backpack/Udacity DAND/04 Data Wrangling/sample_chicago.osm"
+    SAMPLE_FILE = "E:/Repos/data-wrangling-street-type/sample_chicago.osm"
 
 # Replace this with your osm file
 # OSM_FILE = "some_osm.osm"  
