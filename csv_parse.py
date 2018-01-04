@@ -1,3 +1,7 @@
+"""
+Parse a csv file and return a list of dictionary items.
+"""
+
 import os
 import pprint
 import csv
