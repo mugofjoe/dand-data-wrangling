@@ -1,3 +1,7 @@
+"""
+Parse a downloaded HTML page
+"""
+
 from bs4 import BeautifulSoup
 
 def options(soup, id):
