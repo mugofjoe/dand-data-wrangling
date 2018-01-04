@@ -1,3 +1,7 @@
+"""
+Parse an Excel spreadsheet. 
+Do operations on cells within columns.
+"""
 import xlrd
 
 datafile = "2013_ERCOT_Hourly_Load_Data.xls"
