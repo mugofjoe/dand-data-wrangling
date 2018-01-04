@@ -1,3 +1,6 @@
+"""
+Parse an Excel spreadsheet.
+"""
 import xlrd
 
 datafile = "2013_ERCOT_Hourly_Load_Data.xls"
