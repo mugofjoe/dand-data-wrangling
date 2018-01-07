@@ -35,16 +35,16 @@ def process_file(input_file, output_good, output_bad):
 
         # COMPLETE THIS FUNCTION
         for r in reader:
-            year_raw = r['productionStartYear']
             uri = r['URI']
-
             if "dbpedia.org" not in uri:
                 continue
 
+            year_raw = r['productionStartYear']
+
             try:
                 year = int(year_raw.split("-")[0])
-                print(year_only)
-                if year_only in range(1886, 2014):
+                print(year)
+                if year in range(1886, 2014):
                     r['productionStartYear'] = year
                     good_data.append(r)
                 else:
