@@ -35,17 +35,17 @@ def process_file(input_file, output_good, output_bad):
 
         # COMPLETE THIS FUNCTION
         for r in reader:
-            year = r['productionStartYear']
+            year_raw = r['productionStartYear']
             uri = r['URI']
 
             if "dbpedia.org" not in uri:
                 continue
 
             try:
-                year_only = int(year.split("-")[0])
+                year = int(year_raw.split("-")[0])
                 print(year_only)
                 if year_only in range(1886, 2014):
-                    r['productionStartYear'] = year_only
+                    r['productionStartYear'] = year
                     good_data.append(r)
                 else:
                     bad_data.append(r)
@@ -60,6 +60,13 @@ def process_file(input_file, output_good, output_bad):
             g, delimiter=",", fieldnames=header, lineterminator="\n")
         writer.writeheader()
         for row in good_data:
+            writer.writerow(row)
+
+    with open(output_bad, "w") as g:
+        writer = csv.DictWriter(
+            g, delimiter=",", fieldnames=header, lineterminator="\n")
+        writer.writeheader()
+        for row in bad_data:
             writer.writerow(row)
 
 
