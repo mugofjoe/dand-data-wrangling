@@ -103,3 +103,8 @@ ENV/
 # Visual Studio Code
 .vscode/
 .vscode/settings.json
+.vscode/settings.json
+*.csv
+autos.csv
+autos-valid.csv
+FIXME-autos.csv
