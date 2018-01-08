@@ -1,7 +1,6 @@
 import csv
 import pprint
-from py_matrix_utils import is_array
-from composes.matrix.matrix import Matrix
+import numpy as np 
 
 fieldname = "wgs84_pos#lat"
 minval = -90
@@ -18,8 +17,9 @@ def is_number(s):
     except ValueError:
         return False
 
-def is_array_or_matrix(data):
-    return is_array(data) or isinstance(data, Matrix)
+def is_array(data):
+    isinstance(data, (list, tuple, np.ndarray))
+
 
 
 def audit_float_field(v, counts):
@@ -28,7 +28,7 @@ def audit_float_field(v, counts):
         counts['nulls'] += 1
     elif v == "":
         counts['empties'] += 1
-    elif is_array_or_matrix(v):
+    elif is_array(v):
         counts['arrays'] += 1
     elif not is_number(v):
         print "Found non number:", ValueError
