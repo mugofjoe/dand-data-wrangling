@@ -108,3 +108,5 @@ ENV/
 autos.csv
 autos-valid.csv
 FIXME-autos.csv
+.vscode/settings.json
+
