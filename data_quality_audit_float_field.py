@@ -1,6 +1,12 @@
+"""
+Verify and audit a float field.
+"""
+
 import csv
 import pprint
 import numpy as np 
+
+
 
 fieldname = "wgs84_pos#lat"
 minval = -90
