@@ -48,6 +48,8 @@ def audit_float_field(v, counts):
         v = float(v)
         if not ((minval < v) and (v < maxval)):
             print "Found out of range value:", v
+        # else:
+        #     print v
 
 
 if __name__ == "__main__":
