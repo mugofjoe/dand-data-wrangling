@@ -19,17 +19,18 @@ SAMPLE_FILE = ""
 
 COMPUTER_NAME = os.environ['COMPUTERNAME']
 if COMPUTER_NAME == "MELLOYELLO":
-    OSM_FILE = ""
-    SAMPLE_FILE = ""
+    OSM_FILE = "D:/Repos/data-wrangling-street-type/chicago.osm"
+    SAMPLE_FILE = "D:/Repos/data-wrangling-street-type/sample_chicago.osm"
 elif COMPUTER_NAME == "JDAZO":
     OSM_FILE = "E:/Repos/data-wrangling-street-type/chicago.osm"
     SAMPLE_FILE = "E:/Repos/data-wrangling-street-type/sample_chicago.osm"
 
 # Replace this with your osm file
-# OSM_FILE = "some_osm.osm"  
+# OSM_FILE = "some_osm.osm"
 # SAMPLE_FILE = "sample.osm"
 
-k = 10 # Parameter: take every k-th top level element
+k = 10  # Parameter: take every k-th top level element
+
 
 def get_element(osm_file, tags=('node', 'way', 'relation')):
     """
@@ -37,7 +38,7 @@ def get_element(osm_file, tags=('node', 'way', 'relation')):
 
     Reference:
     http://stackoverflow.com/questions/3095434/inserting-newlines-in-xml-file-generated-via-xml-etree-elementtree-in-python
-    
+
     """
     context = iter(ET.iterparse(osm_file, events=('start', 'end')))
     _, root = next(context)
@@ -45,6 +46,7 @@ def get_element(osm_file, tags=('node', 'way', 'relation')):
         if event == 'end' and elem.tag in tags:
             yield elem
             root.clear()
+
 
 with open(SAMPLE_FILE, 'wb') as output:
     output.write('<?xml version="1.0" encoding="UTF-8"?>\n')
@@ -54,6 +56,5 @@ with open(SAMPLE_FILE, 'wb') as output:
     for i, element in enumerate(get_element(OSM_FILE)):
         if i % k == 0:
             output.write(ET.tostring(element, encoding='utf-8'))
-    
+
     output.write('</osm>')
-    
