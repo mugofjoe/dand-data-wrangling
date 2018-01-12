@@ -24,6 +24,22 @@ CITIES = 'cities.csv'
 def fix_area(area):
 
     # YOUR CODE HERE
+    if area.startswith("{"):
+        area_items = area.replace("{", "").replace("}","").split("|")
+        significant_area_item = ""
+        for area_item in area_items:
+            if len(area_item) > len(significant_area_item):
+                significant_area_item = area_item
+
+        if significant_area_item == "":
+            area = None
+        else:
+            area = float(significant_area_item)
+
+    elif area == "NULL" or "":
+        area = None
+    else:
+        area = float(area)
 
     return area
 
