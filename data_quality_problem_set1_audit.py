@@ -38,7 +38,7 @@ CITIES = 'cities.csv'
 FIELDS = ["name", "timeZone_label", "utcOffset", "homepage", "governmentType_label",
           "isPartOf_label", "areaCode", "populationTotal", "elevation",
           "maximumElevation", "minimumElevation", "populationDensity",
-          "wgs84_pos#lat", "wgs84_pos#long", "areaLand", "areaMetro", "areaUrban"]
+          "wgs84_pos#lat", "wgs84_pos#long", "areaLand", "areaMetro", "areaUrban","postalCode"]
 
 def audit_file(filename, fields):
     fieldtypes = {}
