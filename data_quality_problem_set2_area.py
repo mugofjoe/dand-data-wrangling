@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
+TOPIC: Decide what to do with a field that has multiple items in it.
+
 In this problem set you work with cities infobox data, audit it, come up with a
 cleaning idea and then clean it up.
 
@@ -25,7 +27,7 @@ def fix_area(area):
 
     # YOUR CODE HERE
     if area.startswith("{"):
-        area_items = area.replace("{", "").replace("}","").split("|")
+        area_items = area.replace("{", "").replace("}", "").split("|")
         significant_area_item = ""
         for area_item in area_items:
             if len(area_item) > len(significant_area_item):
@@ -42,7 +44,6 @@ def fix_area(area):
         area = float(area)
 
     return area
-
 
 
 def process_file(filename):
@@ -70,13 +71,13 @@ def test():
     data = process_file(CITIES)
 
     print "Printing three example results:"
-    for n in range(5,8):
+    for n in range(5, 8):
         pprint.pprint(data[n]["areaLand"])
 
-    assert data[3]["areaLand"] == None        
+    assert data[3]["areaLand"] == None
     assert data[8]["areaLand"] == 55166700.0
     assert data[20]["areaLand"] == 14581600.0
-    assert data[33]["areaLand"] == 20564500.0    
+    assert data[33]["areaLand"] == 20564500.0
 
 
 if __name__ == "__main__":
