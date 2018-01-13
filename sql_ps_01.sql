@@ -26,7 +26,7 @@ group by BillingCountry
 order by total desc
 limit 5;
 
--- Q-U-E
+
 -- which 10 composers wrote the most songs?
 select Composer, COUNT(*)
 from Track
