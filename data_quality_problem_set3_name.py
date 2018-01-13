@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
+TOPIC: Show contents of a variable that contains multiple items.
+
 In this problem set you work with cities infobox data, audit it, come up with a
 cleaning idea and then clean it up.
 
@@ -34,6 +36,7 @@ def fix_name(name):
 
     return name_result
 
+
 def process_file(filename):
     data = []
     with open(filename, "r") as f:
@@ -60,6 +63,7 @@ def test():
     assert data[14]["name"] == ['Negtemiut', 'Nightmute']
     assert data[9]["name"] == ['Pell City Alabama']
     assert data[3]["name"] == ['Kumhari']
+
 
 if __name__ == "__main__":
     test()
