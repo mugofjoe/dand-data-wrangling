@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
+
+TOPIC: Show data types of variables in a CSV file
+
 In this problem set you work with cities infobox data, audit it, come up with a
 cleaning idea and then clean it up. In the first exercise we want you to audit
 the datatypes that can be found in some particular fields in the dataset.
@@ -35,10 +38,14 @@ import pprint
 
 CITIES = 'cities.csv'
 
-FIELDS = ["name", "timeZone_label", "utcOffset", "homepage", "governmentType_label",
-          "isPartOf_label", "areaCode", "populationTotal", "elevation",
-          "maximumElevation", "minimumElevation", "populationDensity",
-          "wgs84_pos#lat", "wgs84_pos#long", "areaLand", "areaMetro", "areaUrban","postalCode"]
+FIELDS = [
+    "name", "timeZone_label", "utcOffset", "homepage", "governmentType_label",
+    "isPartOf_label", "areaCode", "populationTotal", "elevation",
+    "maximumElevation", "minimumElevation", "populationDensity",
+    "wgs84_pos#lat", "wgs84_pos#long", "areaLand", "areaMetro", "areaUrban",
+    "postalCode"
+]
+
 
 def audit_file(filename, fields):
     fieldtypes = {}
@@ -51,20 +58,21 @@ def audit_file(filename, fields):
 
     with open(filename, 'r') as input_file:
         reader = csv.DictReader(input_file)
-        
+
         # skip the first three records
         for i in range(3):
             reader.next()
 
         for row in reader:
             for field in fields:
-                value = row[field]  # get the value for the current field in the current row
+                value = row[
+                    field]  # get the value for the current field in the current row
 
                 # audit the value if data is missinig
                 if value == '' or value == 'NULL':
                     fieldtypes[field].add(type(None))
                 # audit the value if it contains a list
-                elif value.startswith('{'):   
+                elif value.startswith('{'):
                     fieldtypes[field].add(list)
                 else:
                     try:
@@ -90,6 +98,7 @@ def test():
 
     assert fieldtypes["areaLand"] == set([type(1.1), type([]), type(None)])
     assert fieldtypes['areaMetro'] == set([type(1.1), type(None)])
-    
+
+
 if __name__ == "__main__":
     test()
