@@ -18,12 +18,47 @@ from (select count(*) as total
 limit 5);
 
 
+
 select count
 (*) as total 
 from Invoice
 group by BillingCountry
 order by total desc
 limit 5;
+
+-- Q-U-E
+-- which 10 composers wrote the most songs?
+select Composer, COUNT(*)
+from Track
+group by Composer
+order by COUNT(*) desc 
+limit 10;
+
+-- which tracks in the dataset are between 2,500,00- and 2,6000,0000 mllsecs long?
+select Name
+, Milliseconds
+from Track
+where Milliseconds > 2500000 
+and Milliseconds < 2600000
+order by Milliseconds;
+
+-- list albums written by either Iron Maiden or Amy Winehouse
+-- return the artist name followed by the album title
+select Artist.Name, Album.title
+from Album join Artist
+    on Artist.ArtistId = Album.ArtistId
+where Name = 'Iron Maiden'
+    or Name = 'Amy Winehouse';
+
+
+
+
+
+
+
+
+
+
 
 -- Hidden code pieces:
 -- 1 - U
