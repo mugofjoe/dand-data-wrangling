@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-Crossfield Auditing
+TOPIC: Crossfield auditing two fields with one field.
 
 In this problem set you work with cities infobox data, audit it, come up with a
 cleaning idea and then clean it up.
@@ -45,9 +45,12 @@ def process_file(filename):
         # processing file
         for line in reader:
             # calling your function to check the location
-            result = check_loc(line["point"], line["wgs84_pos#lat"], line["wgs84_pos#long"])
+            result = check_loc(line["point"], line["wgs84_pos#lat"],
+                               line["wgs84_pos#long"])
             if not result:
-                print "{}: {} != {} {}".format(line["name"], line["point"], line["wgs84_pos#lat"], line["wgs84_pos#long"])
+                print "{}: {} != {} {}".format(line["name"], line["point"],
+                                               line["wgs84_pos#lat"],
+                                               line["wgs84_pos#long"])
             data.append(line)
 
     return data
@@ -55,7 +58,9 @@ def process_file(filename):
 
 def test():
     assert check_loc("33.08 75.28", "33.08", "75.28") == True
-    assert check_loc("44.57833333333333 -91.21833333333333", "44.5783", "-91.2183") == False
+    assert check_loc("44.57833333333333 -91.21833333333333", "44.5783",
+                     "-91.2183") == False
+
 
 if __name__ == "__main__":
     test()
