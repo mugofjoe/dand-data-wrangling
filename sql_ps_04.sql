@@ -6,7 +6,7 @@
 ##  Return both the city name and the sum of all invoice totals.
 */
 
--- Q-U-E-R-I-E-S
+-- QUERIESR
 
 select BillingCity, sum(Total)
 from Invoice
