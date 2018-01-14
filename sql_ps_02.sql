@@ -12,7 +12,7 @@
 ##  Write a query that returns the 3 countries with the highest number of invoices, along with the number ##  of invoices for these countries.
 */
 
--- Q-U-E-R-I
+
 
 
 SELECT BillingCountry, COUNT(*)
