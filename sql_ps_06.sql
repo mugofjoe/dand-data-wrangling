@@ -6,7 +6,9 @@
 ##  Write a query that returns the Artist name and total track count of the top 10 rock bands. 
 */
 -- 1297
--- QUERIESRF
+-- QUERIESRFUN
+
+
 
 select Artist.Name, count(Genre.Name)
 from Genre
