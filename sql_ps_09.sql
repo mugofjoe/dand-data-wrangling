@@ -14,6 +14,8 @@ Create the InvoiceLine table.
 
 -- );
 
+-- HIDDEN Code Piece UDAC
+
 CREATE TABLE [Album]
 (
     [AlbumId] INTEGER NOT NULL,
@@ -42,6 +44,7 @@ CREATE TABLE [Invoice]
 );
 CREATE UNIQUE INDEX [IPK_Invoice] ON [Invoice]([InvoiceId]);
 CREATE INDEX [IFK_InvoiceCustomerId] ON [Invoice] ([CustomerId]);
+
 
 CREATE TABLE [Artist]
 (
@@ -107,7 +110,6 @@ CREATE TABLE [Genre]
 CREATE UNIQUE INDEX [IPK_Genre] ON [Genre]([GenreId]);
 
 
-
 CREATE TABLE [InvoiceLine]
 (
     [InvoiceLineId] INTEGER NOT NULL,
@@ -133,3 +135,48 @@ CREATE TABLE [MediaType]
     CONSTRAINT [PK_MediaType] PRIMARY KEY  ([MediaTypeId])
 );
 CREATE UNIQUE INDEX [IPK_MediaType] ON [MediaType]([MediaTypeId]);
+
+CREATE TABLE [Playlist]
+(
+    [PlaylistId] INTEGER NOT NULL,
+    [Name] NVARCHAR(120),
+    CONSTRAINT [PK_Playlist] PRIMARY KEY  ([PlaylistId])
+);
+CREATE UNIQUE INDEX [IPK_Playlist] ON [Playlist]([PlaylistId]);
+
+CREATE TABLE [Track]
+(
+    [TrackId] INTEGER NOT NULL,
+    [Name] NVARCHAR(200) NOT NULL,
+    [AlbumId] INTEGER,
+    [MediaTypeId] INTEGER NOT NULL,
+    [GenreId] INTEGER,
+    [Composer] NVARCHAR(220),
+    [Milliseconds] INTEGER NOT NULL,
+    [Bytes] INTEGER,
+    [UnitPrice] NUMERIC(10,2) NOT NULL,
+    CONSTRAINT [PK_Track] PRIMARY KEY  ([TrackId]),
+    FOREIGN KEY ([AlbumId]) REFERENCES [Album] ([AlbumId])
+                ON DELETE NO ACTION ON UPDATE NO ACTION,
+    FOREIGN KEY ([GenreId]) REFERENCES [Genre] ([GenreId])
+                ON DELETE NO ACTION ON UPDATE NO ACTION,
+    FOREIGN KEY ([MediaTypeId]) REFERENCES [MediaType] ([MediaTypeId])
+                ON DELETE NO ACTION ON UPDATE NO ACTION
+);
+CREATE UNIQUE INDEX [IPK_Track] ON [Track]([TrackId]);
+CREATE INDEX [IFK_TrackAlbumId] ON [Track] ([AlbumId]);
+CREATE INDEX [IFK_TrackGenreId] ON [Track] ([GenreId]);
+CREATE INDEX [IFK_TrackMediaTypeId] ON [Track] ([MediaTypeId]);
+
+CREATE TABLE [PlaylistTrack]
+(
+    [PlaylistId] INTEGER NOT NULL,
+    [TrackId] INTEGER NOT NULL,
+    CONSTRAINT [PK_PlaylistTrack] PRIMARY KEY  ([PlaylistId], [TrackId]),
+    FOREIGN KEY ([PlaylistId]) REFERENCES [Playlist] ([PlaylistId])
+                ON DELETE NO ACTION ON UPDATE NO ACTION,
+    FOREIGN KEY ([TrackId]) REFERENCES [Track] ([TrackId])
+                ON DELETE NO ACTION ON UPDATE NO ACTION
+);
+CREATE UNIQUE INDEX [IPK_PlaylistTrack] ON [PlaylistTrack]([PlaylistId], [TrackId]);
+CREATE INDEX [IFK_PlaylistTrackTrackId] ON [PlaylistTrack] ([TrackId]);
