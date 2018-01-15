@@ -14,7 +14,7 @@ Create the InvoiceLine table.
 
 -- );
 
--- HIDDEN Code Piece UDACI
+-- HIDDEN Code Piece UDACIO
 
 CREATE TABLE [Album]
 (
