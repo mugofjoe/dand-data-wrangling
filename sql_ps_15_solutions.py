@@ -52,3 +52,15 @@ WHERE     Genre.Name = 'Rock'
 GROUP BY  Artist                                           
 ORDER BY  count                                            
 DESC      LIMIT 10;
+
+
+'''And by earlier this lesson you were busy building your own database already!'''
+#QUERY = '''SELECT sql, statement FROM Udacious WHERE lesson=3 AND exercise=4 AND queryId = 31;'''
+CREATE TABLE               [InvoiceLine] (                   
+[InvoiceLineId]            INTEGER PRIMARY KEY,              
+[InvoiceId]                INTEGER,                          
+[TrackId]                  INTEGER,                          
+[UnitPrice]                REAL,                             
+[Quantity]                 INTEGER,                          
+FOREIGN KEY ([InvoiceId])  REFERENCES [Invoice] ([InvoiceId])
+FOREIGN KEY ([TrackId])    REFERENCES [Track] ([TrackId]) );
