@@ -14,7 +14,14 @@ Create the InvoiceLine table.
 
 -- );
 
--- HIDDEN Code Piece UDACIOUS
+-- Hidden Phrase 1
+-- "SELECT sql, statement FROM Udacious WHERE queryId = 35;"
+-- Hidden Phrase 2
+-- Table Name: Udacious
+-- problemSet INTEGER, node INTEGER,  queryId INTEGER, title TEXT, sql TEXT, statement TEXT"
+
+-- HIDDEN Code Piece UDACIOUS!
+-- HIDDEN MESSAGE #3 = Awesome.db
 
 CREATE TABLE [Album]
 (
