@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 
-TOPIC: Show data types of variables in a CSV file
+TOPIC: Show data types of columns in a CSV file
 
 In this problem set you work with cities infobox data, audit it, come up with a
 cleaning idea and then clean it up. In the first exercise we want you to audit
