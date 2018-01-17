@@ -27,3 +27,11 @@ See the 'process_map' and 'test' functions for examples of the expected format.
 lower = re.compile(r'^([a-z]|_)*$')
 lower_colon = re.compile(r'^([a-z]|_)*:([a-z]|_)*$')
 problemchars = re.compile(r'[=\+/&<>;\'"\?%#$@\,\. \t\r\n]')
+
+
+def key_type(element, keys):
+    if element.tag == "tag":
+        # YOUR CODE HERE
+        pass
+
+    return keys
