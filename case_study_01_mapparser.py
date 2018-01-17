@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-TOPIC: How many of each tags are there in an XML file?
+TOPIC: Iterative Parsing
+How many of each distinct top-level tags are there in an XML file?
 
 Your task is to use the iterative parsing to process the map file and
 find out not only what tags are there, but also how many, to get the
@@ -12,11 +13,24 @@ the map as value.
 
 Note that your code will be tested with a different data file than the 'example.osm'
 """
+#%%
 import xml.etree.cElementTree as ET
 import pprint
 
 def count_tags(filename):
         # YOUR CODE HERE
+        tags_dict = {}  # initialize an empty dictionary
+
+        # SAX parsing of the file
+        for event, elem in ET.iterparse(filename):
+            if elem.tag not in tags_dict:
+                tags_dict[elem.tag] = 1
+            else:
+                tags_dict[elem.tag] += 1
+
+        return tags_dict
+
+
 
 def test():
 
@@ -30,6 +44,7 @@ def test():
                      'relation': 1,
                      'tag': 7,
                      'way': 1}
+
 
 if __name__ == "__main__":
     test()
