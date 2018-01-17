@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
+#%%
 import xml.etree.cElementTree as ET
 import pprint
 import re
@@ -23,7 +25,6 @@ four tag categories in a dictionary:
   "other", for other tags that do not fall into the other three categories.
 See the 'process_map' and 'test' functions for examples of the expected format.
 """
-
 lower = re.compile(r'^([a-z]|_)*$')
 lower_colon = re.compile(r'^([a-z]|_)*:([a-z]|_)*$')
 problemchars = re.compile(r'[=\+/&<>;\'"\?%#$@\,\. \t\r\n]')
