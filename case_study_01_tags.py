@@ -35,3 +35,11 @@ def key_type(element, keys):
         pass
 
     return keys
+
+
+def process_map(filename):
+    keys = {"lower": 0, "lower_colon": 0, "problemchars": 0, "other": 0}
+    for _, element in ET.iterparse(filename):
+        keys = key_type(element, keys)
+
+    return keys
