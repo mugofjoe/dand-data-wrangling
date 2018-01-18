@@ -37,6 +37,7 @@ def key_type(element, keys):
             keys['lower'] += 1
         elif lower_colon.search(element.attrib['k']):
             keys['lower_colon'] += 1
+            print(element.attrib['k'])
         elif problemchars.search(element.attrib['k']):
             keys['problemchars'] += 1
         else:
@@ -58,14 +59,14 @@ def test():
     # Note that the assertion below will be incorrect then.
     # Note as well that the test function here is only used in the Test Run;
     # when you submit, your code will be checked against a different dataset.
-    keys = process_map('example.osm')
+    keys = process_map('conroy_oakridge.osm')
     pprint.pprint(keys)
-    assert keys == {
-        'lower': 5,
-        'lower_colon': 0,
-        'other': 1,
-        'problemchars': 1
-    }
+    # assert keys == {
+    #     'lower': 5,
+    #     'lower_colon': 0,
+    #     'other': 1,
+    #     'problemchars': 1
+    # }
 
 
 if __name__ == "__main__":
