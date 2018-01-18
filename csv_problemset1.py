@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 """
-USING CSV MODULE
+TOPIC: Parse a CSV file and extract each row
+- The row extracted is cast into a list of lists
+- [list for each row][list of column values]
 
 Your task is to process the supplied file and use the csv module to extract data from it.
 The data comes from NREL (National Renewable Energy Laboratory) website. Each file
@@ -21,7 +23,7 @@ import csv
 import os
 
 DATADIR = ""
-DATAFILE = "745090.csv"
+DATAFILE = "E:/Google Drive/Backpack/Udacity DAND/04 Data Wrangling/745090.csv"
 
 
 def parse_file(datafile):

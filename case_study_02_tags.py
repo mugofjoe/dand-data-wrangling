@@ -1,11 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
-#%%
-import xml.etree.cElementTree as ET
-import pprint
-import re
 """
+TOPIC: Group and count the number of tags in an XML file
+
 Your task is to explore the data a bit more.
 Before you process the data and add it into your database, you should check the
 "k" value for each "<tag>" and see if there are any potential problems.
@@ -25,6 +22,11 @@ four tag categories in a dictionary:
   "other", for other tags that do not fall into the other three categories.
 See the 'process_map' and 'test' functions for examples of the expected format.
 """
+#%%
+import xml.etree.cElementTree as ET
+import pprint
+import re
+
 lower = re.compile(r'^([a-z]|_)*$')
 lower_colon = re.compile(r'^([a-z]|_)*:([a-z]|_)*$')
 problemchars = re.compile(r'[=\+/&<>;\'"\?%#$@\,\. \t\r\n]')

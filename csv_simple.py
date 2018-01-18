@@ -1,4 +1,6 @@
 '''
+
+
 Your task is to read the input DATAFILE line by line, and for the first 10 lines (not including the header)
 split each line on "," and then for each line, create a dictionary
 where the key is the header title of the field, and the value is the value of that field in the row.
@@ -9,7 +11,6 @@ You can use the Python string method strip() to remove the extra whitespace.
 You have to parse only the first 10 data lines in this exercise,
 so the returned list should have 10 entries!
 '''
-
 import csv
 import os
 import itertools
