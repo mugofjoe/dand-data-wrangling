@@ -14,3 +14,17 @@ The function process_map should return a set of unique user IDs ("uid")
 def get_user(element):
     return
 
+def process_map(filename):
+    users = set()
+    for _, element in ET.iterparse(filename):
+        pass
+
+    return users
+
+def test():
+
+    users = process_map('example.osm')
+    pprint.pprint(users)
+    assert len(users) == 6
+    
+
