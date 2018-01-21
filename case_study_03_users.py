@@ -10,3 +10,7 @@ have contributed to the map in this particular area!
 
 The function process_map should return a set of unique user IDs ("uid")
 """
+
+def get_user(element):
+    return
+
