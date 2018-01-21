@@ -26,5 +26,6 @@ def test():
     users = process_map('example.osm')
     pprint.pprint(users)
     assert len(users) == 6
-    
 
+if __name__ == "__main__":
+    test()
