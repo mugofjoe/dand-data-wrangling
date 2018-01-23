@@ -46,3 +46,9 @@ def audit(osmfile):
                     audit_street_type(street_types, tag.attrib['v'])
     osm_file.close()
     return street_types
+
+def update_name(name, mapping):
+
+    # YOUR CODE HERE
+
+    return name
