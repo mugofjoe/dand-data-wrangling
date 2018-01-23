@@ -15,4 +15,12 @@ import re
 import pprint
 
 OSMFILE = "example.osm"
-street_type_re = re.compile(r'\b\S+\.?$', re.IGNORECASE)
+street_type_re = re.compile(r'\b\S+\.?$', re.IGNORECASE) # get the last word
+
+expected = ["Street", "Avenue", "Boulevard", "Drive", "Court", "Place", "Square", "Lane", "Road", 
+            "Trail", "Parkway", "Commons"]
+
+# UPDATE THIS VARIABLE
+mapping = { "St": "Street",
+            "St.": "Street"
+            }
