@@ -1,5 +1,6 @@
 """
 Parse a csv file and return a list of dictionary items.
+Each list row-item contains a dictionary-ed version of each CSV record.
 """
 
 import os
