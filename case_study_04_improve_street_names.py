@@ -24,3 +24,10 @@ expected = ["Street", "Avenue", "Boulevard", "Drive", "Court", "Place", "Square"
 mapping = { "St": "Street",
             "St.": "Street"
             }
+
+def audit_street_type(street_types, street_name):
+    m = street_type_re.search(street_name)
+    if m:
+        street_type = m.group()
+        if street_type not in expected:
+            street_types[street_type].add(street_name)
