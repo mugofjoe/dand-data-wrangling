@@ -1,4 +1,7 @@
 """
+TOPIC: Create a dictionary of street types that you might want to update
+       Then create a function that updates the street types
+
 Your task in this exercise has two steps:
 
 - audit the OSMFILE and change the variable 'mapping' to reflect the changes needed to fix 
