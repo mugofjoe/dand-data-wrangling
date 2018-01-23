@@ -31,3 +31,6 @@ def audit_street_type(street_types, street_name):
         street_type = m.group()
         if street_type not in expected:
             street_types[street_type].add(street_name)
+
+def is_street_name(elem):
+    return (elem.attrib['k'] == "addr:street")
