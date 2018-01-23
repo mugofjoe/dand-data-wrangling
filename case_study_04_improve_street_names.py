@@ -14,7 +14,7 @@ from collections import defaultdict
 import re
 import pprint
 
-OSMFILE = "example.osm"
+OSMFILE = "example_04.osm"
 street_type_re = re.compile(r'\b\S+\.?$', re.IGNORECASE) # get the last word
 
 expected = ["Street", "Avenue", "Boulevard", "Drive", "Court", "Place", "Square", "Lane", "Road", 
@@ -22,7 +22,9 @@ expected = ["Street", "Avenue", "Boulevard", "Drive", "Court", "Place", "Square"
 
 # UPDATE THIS VARIABLE
 mapping = { "St": "Street",
-            "St.": "Street"
+            "St.": "Street",
+            "Ave": "Avenue",
+            "Rd.": "Road"
             }
 
 def audit_street_type(street_types, street_name):
@@ -39,7 +41,6 @@ def audit(osmfile):
     osm_file = open(osmfile, "r")
     street_types = defaultdict(set)
     for event, elem in ET.iterparse(osm_file, events=("start",)):
-
         if elem.tag == "node" or elem.tag == "way":
             for tag in elem.iter("tag"):
                 if is_street_name(tag):
@@ -50,13 +51,18 @@ def audit(osmfile):
 def update_name(name, mapping):
 
     # YOUR CODE HERE
-
+    match = street_type_re.search(name)
+    if match:
+        street_type = match.group()
+        if street_type not in expected:
+            # replace 
+            name = re.sub(street_type_re, mapping[street_type], name)
     return name
 
 
 def test():
     st_types = audit(OSMFILE)
-    assert len(st_types) == 3
+    # assert len(st_types) == 3
     pprint.pprint(dict(st_types))
 
     for st_type, ways in st_types.iteritems():
