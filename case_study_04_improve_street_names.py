@@ -52,3 +52,22 @@ def update_name(name, mapping):
     # YOUR CODE HERE
 
     return name
+
+
+def test():
+    st_types = audit(OSMFILE)
+    assert len(st_types) == 3
+    pprint.pprint(dict(st_types))
+
+    for st_type, ways in st_types.iteritems():
+        for name in ways:
+            better_name = update_name(name, mapping)
+            print name, "=>", better_name
+            if name == "West Lexington St.":
+                assert better_name == "West Lexington Street"
+            if name == "Baldwin Rd.":
+                assert better_name == "Baldwin Road"
+
+
+if __name__ == '__main__':
+    test()
