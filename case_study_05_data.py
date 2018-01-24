@@ -138,4 +138,54 @@ Each dictionary should have the fields:
 - node_id: the ref attribute value of the nd tag
 - position: the index starting at 0 of the nd tag i.e. what order the nd tag appears within
             the way element
+
+The final return value for a "way" element should look something like:
+
+{'way': {'id': 209809850,
+         'user': 'chicago-buildings',
+         'uid': 674454,
+         'version': '1',
+         'timestamp': '2013-03-13T15:58:04Z',
+         'changeset': 15353317},
+ 'way_nodes': [{'id': 209809850, 'node_id': 2199822281, 'position': 0},
+               {'id': 209809850, 'node_id': 2199822390, 'position': 1},
+               {'id': 209809850, 'node_id': 2199822392, 'position': 2},
+               {'id': 209809850, 'node_id': 2199822369, 'position': 3},
+               {'id': 209809850, 'node_id': 2199822370, 'position': 4},
+               {'id': 209809850, 'node_id': 2199822284, 'position': 5},
+               {'id': 209809850, 'node_id': 2199822281, 'position': 6}],
+ 'way_tags': [{'id': 209809850,
+               'key': 'housenumber',
+               'type': 'addr',
+               'value': '1412'},
+              {'id': 209809850,
+               'key': 'street',
+               'type': 'addr',
+               'value': 'West Lexington St.'},
+              {'id': 209809850,
+               'key': 'street:name',
+               'type': 'addr',
+               'value': 'Lexington'},
+              {'id': '209809850',
+               'key': 'street:prefix',
+               'type': 'addr',
+               'value': 'West'},
+              {'id': 209809850,
+               'key': 'street:type',
+               'type': 'addr',
+               'value': 'Street'},
+              {'id': 209809850,
+               'key': 'building',
+               'type': 'regular',
+               'value': 'yes'},
+              {'id': 209809850,
+               'key': 'levels',
+               'type': 'building',
+               'value': '1'},
+              {'id': 209809850,
+               'key': 'building_id',
+               'type': 'chicago',
+               'value': '366409'}]}
+
+
 """
