@@ -37,7 +37,9 @@ against this schema to ensure it is correct.
 The function should take as input an iterparse Element object 
 and return a dictionary.
 
+### NODE TAG
 ### If the element top level tag is "node":
+
 The dictionary returned should have the format {"node": .., "node_tags": ...}
 
 The "node" field should hold a dictionary of the following top level node attributes:
@@ -49,7 +51,7 @@ The "node" field should hold a dictionary of the following top level node attrib
 - lon
 - timestamp
 - changeset
-All other attributes can be ignored
+- *All other attributes can be ignored
 
 The "node_tags" field should hold a list of dictionaries, one per secondary tag. 
 
@@ -107,4 +109,33 @@ The final return value for a "node" element should look something like:
                         ]
           }
 
+
+### WAY TAG
+### If the element top level tag is "way":
+
+The dictionary should have the format {"way": ..., "way_tags": ..., "way_nodes": ...}
+
+The "way" field should hold a dictionary of the following top level way attributes:
+- id
+-  user
+- uid
+- version
+- timestamp
+- changeset
+- *All other attributes can be ignored
+
+The "way_tags" field should again hold a list of dictionaries, following the exact same rules as
+for "node_tags".
+
+Additionally, the dictionary should have a field "way_nodes". 
+
+"way_nodes" should hold a list of
+dictionaries, one for each nd child tag. 
+
+Each dictionary should have the fields:
+
+- id: the top level element (way) id
+- node_id: the ref attribute value of the nd tag
+- position: the index starting at 0 of the nd tag i.e. what order the nd tag appears within
+            the way element
 """
