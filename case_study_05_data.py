@@ -249,7 +249,8 @@ def process_map(file_in, validate):
         way_nodes_writer = UnicodeDictWriter(way_nodes_file, WAY_NODES_FIELDS)
         way_tags_writer = UnicodeDictWriter(way_tags_file, WAY_TAGS_FIELDS)     
 
-        nodes_writer    
+        nodes_writer.writeheader() 
+        node_tags_writer.writeheader()   
 
 
 if __name__ == '__main__':
