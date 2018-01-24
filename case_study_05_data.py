@@ -234,12 +234,60 @@ def shape_element(element, node_attr_fields=NODE_FIELDS, way_attr_fields=WAY_FIE
                 node_attribs[attrib] = element.attrib[attrib]
         for child in element:
             node_tag = {}
-            if LOWER_
-
-
-        
+            if LOWER_COLON.match(child.attrib['k']):    # match a key/value type child element
+                node_tag['type'] = child.attrib['k'].split(":",1)[0]
+                node_tag['key'] = child.attrib['k'].split(':',1)[1]
+                node_tag['id'] = element.attrib['id']
+                node_tag['value'] = child.attrib['v']
+                tags.append(node_tag)
+            elif PROBLEMCHARS.match(child.attrib['k']):
+                continue
+            else:
+                node_tag['type'] = 'regular'
+                node_tag['key'] = child.attrib['k']
+                node_tag['id'] = element.attrib['id']
+                node_tag['value'] = child.attrib['v']
+                tags.append(node_tag)     
         return {'node': node_attribs, 'node_tags': tags}
+
     elif element.tag == 'way':
+        for attrib in element.attrib:
+            if attrib in WAY_FIELDS:
+                way_attribs[attrib] = element.attrib[attrib]  
+        
+        position = 0
+        for child in element:
+            way_tag = {}
+            way_node = {}
+            
+            if child.tag == 'tag':
+                if LOWER_COLON.match(child.attrib['k']):
+                    way_tag['type'] = child.attrib['k'].split(':',1)[0]
+                    """
+                    code below parses on the first encounter with ':'
+                    addr:street:name 
+                    to [0] addr, [1] street:name
+                    """
+                    way_tag['key'] = child.attrib['k'].split(':',1)[1] 
+                    way_tag['id'] = element.attrib['id']
+                    way_tag['value'] = child.attrib['v']
+                    tags.append(way_tag)
+                elif PROBLEMCHARS.match(child.attrib['k']):
+                    continue
+                else:
+                    way_tag['type'] = 'regular'
+                    way_tag['key'] = child.attrib['k']
+                    way_tag['id'] = element.attrib['id']
+                    way_tag['value'] = child.attrib['v']
+                    tags.append(way_tag)
+                    
+            elif child.tag == 'nd':
+                way_node['id'] = element.attrib['id']
+                way_node['node_id'] = child.attrib['ref']
+                way_node['position'] = position
+                position += 1
+                way_nodes.append(way_node)       
+
         return {'way': way_attribs, 'way_nodes': way_nodes, 'way_tags': tags}
 
 
@@ -303,6 +351,7 @@ def process_map(file_in, validate):
         # iterate through the input OSM file and yield 
         # the element if its a node or a way element
         for element in get_element(file_in, tags=('node', 'way')):
+            el = shape_element(element)
 
 
 
