@@ -51,5 +51,60 @@ The "node" field should hold a dictionary of the following top level node attrib
 - changeset
 All other attributes can be ignored
 
+The "node_tags" field should hold a list of dictionaries, one per secondary tag. 
+
+Secondary tags are child tags of node which have the tag name/type: "tag". 
+
+Each dictionary should have the following
+fields from the secondary tag attributes:
+
+- id: the top level node id attribute value
+- key: the full tag "k" attribute value if no colon is
+  present or the characters after the colon if one is.
+- value: the tag "v" attribute value
+- type: either the characters before the colon in the 
+  tag "k" value or "regular" if a colon is not present.
+
+Additionally,
+
+- if the tag "k" value contains problematic characters, the tag should be ignored
+
+- if the tag "k" value contains a ":" the characters before the ":" should be set as the tag type
+  and characters after the ":" should be set as the tag key
+
+- if there are additional ":" in the "k" value they should be ignored and kept as part of
+  the tag key. For example:
+
+  <tag k="addr:street:name" v="Lincoln"/>
+  should be turned into
+  {'id': 12345, 'key': 'street:name', 'value': 'Lincoln', 'type': 'addr'}
+
+- If a node has no secondary tags then the "node_tags" 
+  field should just contain an empty list.
+
+The final return value for a "node" element should look something like:
+
+{'node': {'id': 757860928,
+          'user': 'uboot',
+          'uid': 26299,
+          'version': '2',
+          'lat': 41.9747374,
+          'lon': -87.6920102,
+          'timestamp': '2010-07-22T16:16:51Z',
+          'changeset': 5288876},
+          'node_tags': [{'id': 757860928,
+                            'key': 'amenity',
+                            'value': 'fast_food',
+                            'type': 'regular'},
+                        {'id': 757860928,
+                            'key': 'cuisine',
+                            'value': 'sausage',
+                            'type': 'regular'},
+                        {'id': 757860928,
+                            'key': 'name',
+                            'value': "Shelly's Tasty Freeze",
+                            'type': 'regular'}
+                        ]
+          }
 
 """
