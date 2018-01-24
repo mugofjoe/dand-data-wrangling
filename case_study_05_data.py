@@ -187,5 +187,12 @@ The final return value for a "way" element should look something like:
                'type': 'chicago',
                'value': '366409'}]}
 
-
 """
+import cerberus
+import csv
+import codecs
+import pprint
+import re
+import schema
+import xml.etree.cElementTree as ET
+
