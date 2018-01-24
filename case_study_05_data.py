@@ -204,6 +204,9 @@ WAYS_PATH = "ways.csv"
 WAY_NODES_PATH = "ways_nodes.csv"
 WAY_TAGS_PATH = "ways_tags.csv"
 
+LOWER_COLON = re.compile(r'^([a-z]|_)+:([a-z]|_)+')
+PROBLEMCHARS = re.compile(r'[=\+/&<>;\'"\?%#$@\,\. \t\r\n]')
+
 SCHEMA = schema.schema
 
 # Make sure the fields order in the csvs matches the column order in the sql table schema
@@ -213,6 +216,46 @@ WAY_FIELDS = ['id', 'user', 'uid', 'version', 'changeset', 'timestamp']
 WAY_TAGS_FIELDS = ['id', 'key', 'value', 'type']
 WAY_NODES_FIELDS = ['id', 'node_id', 'position']
 
+def shape_element(element, node_attr_fields=NODE_FIELDS, way_attr_fields=WAY_FIELDS,
+                  problem_chars=PROBLEMCHARS, default_tag_type='regular'):
+    """
+    Clean and shape node or way XML element to Python dict
+    """
+
+    node_attribs = {}
+    way_attribs = {}
+    way_nodes = []
+    tags = []  # Handle secondary tags the same way for both node and way elements
+
+    # YOUR CODE HERE
+    if element.tag == 'node':
+        for attrib in element.attrib:
+            if attrib in NODE_FIELDS:
+                node_attribs[attrib] = element.attrib[attrib]
+        for child in element:
+            node_tag = {}
+            if LOWER_
+
+
+        
+        return {'node': node_attribs, 'node_tags': tags}
+    elif element.tag == 'way':
+        return {'way': way_attribs, 'way_nodes': way_nodes, 'way_tags': tags}
+
+
+# ================================================== #
+#               Helper Functions                     #
+# ================================================== #
+def get_element(osm_file, tags=('node', 'way', 'relation')):
+    """
+    Yield element if it is the right type of tag
+    """
+    context = ET.iterparse(osm_file, events=('start', 'end'))
+    _, root = next(context)
+    for event, elem in context:
+        if event == 'end' and elem.tag in tags:
+            yield elem
+            root.clear()
 
 
 class UnicodeDictWriter(csv.DictWriter, object):
@@ -251,6 +294,16 @@ def process_map(file_in, validate):
 
         nodes_writer.writeheader() 
         node_tags_writer.writeheader()   
+        ways_writer.writeheader()
+        way_nodes_writer.writeheader()
+        way_tags_writer.writeheader()
+
+        validator = cerberus.Validator()
+
+        # iterate through the input OSM file and yield 
+        # the element if its a node or a way element
+        for element in get_element(file_in, tags=('node', 'way')):
+
 
 
 if __name__ == '__main__':
