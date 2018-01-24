@@ -305,6 +305,16 @@ def get_element(osm_file, tags=('node', 'way', 'relation')):
             yield elem
             root.clear()
 
+def validate_element(element, validator, schema=SCHEMA):
+    """
+    Raise ValidationError if element does not match schema
+    """
+    if validator.validate(element, schema) is not True:
+        field, errors = next(validator.errors.iteritems())
+        message_string = "\nElement of type '{0}' has the following errors:\n{1}"
+        error_string = pprint.pformat(errors)
+        
+        raise Exception(message_string.format(field, error_string))
 
 class UnicodeDictWriter(csv.DictWriter, object):
     """
@@ -352,6 +362,17 @@ def process_map(file_in, validate):
         # the element if its a node or a way element
         for element in get_element(file_in, tags=('node', 'way')):
             el = shape_element(element)
+            if el:
+                if validate is True:
+                    validate_element(el, validator)
+
+                if element.tag == 'node':
+                    nodes_writer.writerow(el['node'])
+                    node_tags_writer.writerows(el['node_tags'])
+                elif element.tag == 'way':
+                    ways_writer.writerow(el['way'])
+                    way_nodes_writer.writerows(el['way_nodes'])
+                    way_tags_writer.writerows(el['way_tags'])               
 
 
 
