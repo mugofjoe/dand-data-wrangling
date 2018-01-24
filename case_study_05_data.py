@@ -212,3 +212,16 @@ NODE_TAGS_FIELDS = ['id', 'key', 'value', 'type']
 WAY_FIELDS = ['id', 'user', 'uid', 'version', 'changeset', 'timestamp']
 WAY_TAGS_FIELDS = ['id', 'key', 'value', 'type']
 WAY_NODES_FIELDS = ['id', 'node_id', 'position']
+
+# ================================================== #
+#               Main Function                        #
+# ================================================== #
+def process_map(file_in, validate):
+    """
+    Iteratively process each XML element and write to csv(s)
+    """  
+
+if __name__ == '__main__':
+    # Note: Validation is ~ 10X slower. For the project consider using a small
+    # sample of the map when validating.
+    process_map(OSM_PATH, validate=True)
