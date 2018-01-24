@@ -33,5 +33,23 @@ and the eventual tables.
 Using the cerberus library we can validate the output
 against this schema to ensure it is correct.
 
+## Shape Element Function
+The function should take as input an iterparse Element object 
+and return a dictionary.
+
+### If the element top level tag is "node":
+The dictionary returned should have the format {"node": .., "node_tags": ...}
+
+The "node" field should hold a dictionary of the following top level node attributes:
+- id
+- user
+- uid
+- version
+- lat
+- lon
+- timestamp
+- changeset
+All other attributes can be ignored
+
 
 """
