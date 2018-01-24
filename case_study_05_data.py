@@ -196,3 +196,10 @@ import re
 import schema
 import xml.etree.cElementTree as ET
 
+OSM_PATH = "example.osm"
+
+NODES_PATH = "nodes.csv"
+NODE_TAGS_PATH = "nodes_tags.csv"
+WAYS_PATH = "ways.csv"
+WAY_NODES_PATH = "ways_nodes.csv"
+WAY_TAGS_PATH = "ways_tags.csv"
