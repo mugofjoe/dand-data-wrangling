@@ -63,12 +63,13 @@ def test():
     # when you submit, your code will be checked against a different dataset.
     keys = process_map('conroy_oakridge.osm')
     pprint.pprint(keys)
-    # assert keys == {
-    #     'lower': 5,
-    #     'lower_colon': 0,
-    #     'other': 1,
-    #     'problemchars': 1
-    # }
+    
+    assert keys == {
+        'lower': 5,
+        'lower_colon': 0,
+        'other': 1,
+        'problemchars': 1
+    }
 
 
 if __name__ == "__main__":

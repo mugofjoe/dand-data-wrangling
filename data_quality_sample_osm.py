@@ -1,5 +1,7 @@
 """
-Use the following code to take a systematic sample of elements 
+TOPIC: Take a small sample from a big CSV dataset
+
+Take a systematic sample of elements 
 from your original OSM region. 
 
 Try changing the value of k so that your resulting SAMPLE_FILE 
