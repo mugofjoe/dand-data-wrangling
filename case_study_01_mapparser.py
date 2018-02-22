@@ -18,6 +18,7 @@ import xml.etree.cElementTree as ET
 import pprint
 
 def count_tags(filename):
+
         # YOUR CODE HERE
         tags_dict = {}  # initialize an empty dictionary
 
